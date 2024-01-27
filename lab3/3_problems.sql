@@ -1,6 +1,6 @@
 -- use CollMgmtSys;
 --1
-select * from student where major="Software";
+select name from student where major="Software";
 --2
 select name,age,major from student;
 --3
@@ -10,17 +10,17 @@ select dept as department from faculty;
 --5
 select * from student where name like "S%";
 --6
-select * from faculty where name like "_.T%";
+select name from faculty where name like "_.T%";
 --7
-select name from class where time="E5-6";
+select name,room from class where time="E5-6";
 --8
-select name from class where time="E5-6" and fid in (
+select name,room from class where time="E5-6" and fid in (
     select fid from faculty where name like "B%"
 );
 --9
 select * from faculty order by dept asc,fid asc;
 --10
-select name from class where room="R3" or fid in (
+select distinct name from class where room="R3" or fid in (
     select fid from faculty where name="B.Devkota"
 );
 --11
@@ -55,7 +55,6 @@ select student.name from student where snum in (
 select name from student where major = "Software" or major="Computer";
 --20
 -- start transaction;
-delete from enrolled where snum in (select min(age) as age from student);
-delete from student where snum in (select min(age) as age from student);
+delete  student,enrolled from  student  inner join enrolled on student.snum = enrolled.snum where student.age in (select min(age) as age from student);
 select * from student;
 -- rollback;

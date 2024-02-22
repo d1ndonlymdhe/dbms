@@ -55,6 +55,6 @@ select student.name from student where snum in (
 select name from student where major = "Software" or major="Computer";
 --20
 -- start transaction;
-delete  student,enrolled from  student  inner join enrolled on student.snum = enrolled.snum where student.age in (select min(age) as age from student);
+delete student,enrolled from  student inner join enrolled on student.snum = enrolled.snum where student.age in (select min(age) as age from student);
 select * from student;
 -- rollback;

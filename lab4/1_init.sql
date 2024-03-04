@@ -1,5 +1,5 @@
--- create database lab4;
--- use lab4;
+create database lab4;
+use lab4;
 
 create table customers(
     id integer primary key AUTO_INCREMENT,

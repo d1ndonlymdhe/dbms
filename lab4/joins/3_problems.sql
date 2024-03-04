@@ -36,4 +36,4 @@ SELECT t1.OrderID, t0.ProductID, t0.Name, t0.UnitPrice, t1.Quantity, t1.Price, t
 FROM tblProduct AS t0
 INNER JOIN tblOrder AS t1 ON t0.ProductID = t1.ProductID
 INNER JOIN tblCustomer AS t2 ON t1.CustomerID = t2.CustID AND t1.ContactNo = t2.ContactNo
-ORDER BY t1.OrderID
+ORDER BY t1.OrderID;
